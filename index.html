@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>C0R2 — Official Android App Download</title>
+  <meta name="description" content="C0R2 Official Android App — Safe & Verified Direct APK Download." />
+  <meta name="theme-color" content="#07090d" />
+  <style>
+    :root {
+      --bg: #07090d;
+      --surface: #111620;
+      --surface-2: #171d2a;
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --accent: #ff2438;
+      --accent-hover: #ff3b4d;
+      --verified: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+      background: radial-gradient(circle at top center, rgba(255, 36, 56, 0.14), transparent 52%), var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .brand-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .brand-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #cbd5e1;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--verified);
+      box-shadow: 0 0 8px var(--verified);
+    }
+
+    .app-card {
+      background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px 16px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.55);
+    }
+
+    .app-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .app-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .app-logo-wrap {
+      width: 62px;
+      height: 62px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #1b0b10 0%, #090d14 100%);
+      border: 1px solid rgba(255, 36, 56, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 8px 20px rgba(255, 36, 56, 0.22);
+    }
+
+    .app-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .app-logo-fallback {
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+    }
+
+    .app-meta {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .app-title-line {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+
+    .app-name {
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      line-height: 1.1;
+    }
+
+    .verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .app-specs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .spec-sep {
+      opacity: 0.45;
+    }
+
+    .btn-download-side {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(255, 36, 56, 0.4);
+      transition: transform 0.12s ease, background 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-download-side:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-download-side:active {
+      transform: scale(0.96);
+    }
+
+    .status-banner {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 12px;
+      color: #e2e8f0;
+    }
+
+    .status-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .spinner {
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .fallback-line {
+      text-align: center;
+      font-size: 12.5px;
+      color: var(--muted);
+      line-height: 1.5;
+      padding: 2px 6px;
+    }
+
+    .fallback-link {
+      color: #ff5c6c;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: inherit;
+      padding: 0;
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .info-title {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #cbd5e1;
+    }
+
+    .steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    .steps li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .step-num {
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      background: rgba(255, 36, 56, 0.16);
+      border: 1px solid rgba(255, 36, 56, 0.35);
+      color: #ff6b79;
+      font-size: 11px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 360px) {
+      .app-logo-wrap {
+        width: 52px;
+        height: 52px;
+      }
+      .app-name {
+        font-size: 18px;
+      }
+      .btn-download-side {
+        padding: 9px 11px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="brand-top">
+      <span class="brand-tag">
+        <span class="dot"></span>
+        Official Android APK
+      </span>
+      <span>Direct &amp; Ad-Free</span>
+    </div>
+
+    <section class="app-card" aria-label="C0R2 Download Card">
+      <div class="app-row">
+        <div class="app-left">
+          <div class="app-logo-wrap" id="logoWrap">
+            <img src="https://catbox.moe" alt="C0R2 Logo" />
+          </div>
+
+          <div class="app-meta">
+            <div class="app-title-line">
+              <h1 class="app-name" id="appName">C0R2</h1>
+              <span class="verified-badge">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="m9 12 2 2 4-4"/>
+                </svg>
+                Safe &amp; Verified
+              </span>
+            </div>
+
+            <div class="app-specs">
+              <span id="appVersion">v1.0.0</span>
+              <span class="spec-sep">•</span>
+              <span id="appSize">9.9 MB</span>
+              <span class="spec-sep">•</span>
+              <span>Android 6.0+</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://files.catbox.moe/t7f8nu.apk" download="C0R2.apk" class="btn-download-side" id="downloadBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download</span>
+        </a>
+      </div>
+
+      <div class="status-banner" id="statusBanner">
+        <div class="status-left">
+          <div class="spinner" id="statusSpinner"></div>
+          <span id="statusText">C0R2 APK download shuru ho raha hai...</span>
+        </div>
+        <span style="color:#34d399;font-weight:700;font-size:11px;">Surakshit</span>
+      </div>
+    </section>
+
+    <p class="fallback-line">
+      Agar download apne aap shuru na ho, toh
+      <a href="https://files.catbox.moe/t7f8nu.apk" download="C0R2.apk" class="fallback-link" id="manualDownloadBtn">yahan click karein</a>.
+    </p>
+
+    <section class="info-card" aria-label="Install Steps">
+      <div class="info-title">Install Karne Ka Aasaan Tarika</div>
+      <ol class="steps">
+        <li><span class="step-num">1</span><span>Upar <strong>Download</strong> par tap karein (ya auto-download ka intezaar karein).</span></li>
